@@ -20,9 +20,9 @@ public class UserValidation {
 		try {
 			scanner = new Scanner(System.in);
 			
-			boolean validLogin = false;
-			int loginAttempts = 0;
-			while (!validLogin && loginAttempts < 5) {
+			boolean Login = false;
+			int l = 0;
+			while (!Login && l < 5) {
 				System.out.println("Enter your email: ");
 				String username = scanner.nextLine();
 				System.out.println("Enter your password: ");
@@ -31,11 +31,11 @@ public class UserValidation {
 				User validUser = userService.validateUser(username, password);
 				if (validUser != null) {
 					System.out.println("Welcome: " + validUser.getName());
-					validLogin = true;
+					Login = true;
 				} else {
 					System.out.println("Invalid login, please try again");
-					loginAttempts++;
-					if (loginAttempts == 5) {
+					l++;
+					if (l == 5) {
 						System.out.println("Too many failed login attempts, you are now locked out.");
 					}
 				}
